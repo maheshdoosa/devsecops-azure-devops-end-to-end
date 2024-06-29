@@ -9,7 +9,7 @@ variables:
 # - name: snyk_token
 #   value: $[variables.SNYKTOKEN]
 # - name: sonar_token
-#   value: $[variables.SONARTOKEN]
+#   value: $[variables.SONARTOKEN] #
 
 jobs:
 - job: Sonar_SAST_Scan_Job
