@@ -1,22 +1,22 @@
 trigger:
-- master
+- main
 
 pool:
   vmImage: ubuntu-latest
 
 variables:
 - group: "SECURE_TOKENS"
-- name: snyk_token
-  value: $[variables.SNYKTOKEN]
-- name: sonar_token
-  value: $[variables.SONARTOKEN]
+# - name: snyk_token
+#   value: $[variables.SNYKTOKEN]
+# - name: sonar_token
+#   value: $[variables.SONARTOKEN]
 
 jobs:
 - job: Sonar_SAST_Scan_Job
   container: maven:3.8.1-openjdk-17-slim
   steps:
   - script: |
-      mvn verify package sonar:sonar -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.organization=azuredevopsdevsecopsoorg -Dsonar.projectKey=azuredevsecopsoprojectkey -Dsonar.token=$(sonar_token)
+      mvn verify package sonar:sonar -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.organization=mdazuredevsecopsorg -Dsonar.projectKey=mdazuredevsecopsprojectkey -Dsonar.token=$(sonartoken_1)
     displayName: "Integrate SAST using SonarCloud to populate code coverage and secure pipeline variable in Azure DevOps DevSecOps Pipeline"
 
 - job: Snyk_SCA_Scan_Job
